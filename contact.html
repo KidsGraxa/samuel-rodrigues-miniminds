@@ -38,7 +38,57 @@
 
   <!-- Contact Javascript File -->
   <script src="mail/jqBootstrapValidation.min.js"></script>
-  <script src="mail/contact.js"></script>
+  <script>
+  $(document).ready(function () {
+    $('#contactForm').jqBootstrapValidation({
+      preventSubmit: true,
+      submitError: function ($form, event, errors) {
+        // Aqui você pode adicionar lógica de tratamento de erro, se necessário
+      },
+      submitSuccess: function ($form, event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+
+        // Aqui você pode adicionar a lógica de envio do formulário usando Ajax, por exemplo
+
+        var name = $("input#name").val();
+        var email = $("input#email").val();
+        var phone = $("input#phone").val();
+        var message = $("textarea#message").val();
+
+        // Adicione a lógica de envio aqui, como um pedido AJAX
+
+        // Exemplo de pedido AJAX usando jQuery:
+        // $.ajax({
+        //   url: "caminho/do/seu/script-de-envio.php",
+        //   type: "POST",
+        //   data: {
+        //     name: name,
+        //     email: email,
+        //     phone: phone,
+        //     message: message
+        //   },
+        //   cache: false,
+        //   success: function () {
+        //     // Lógica de sucesso aqui
+        //   },
+        //   error: function () {
+        //     // Lógica de erro aqui
+        //   }
+        // });
+
+        // O código acima é apenas um exemplo. Substitua-o pelo seu próprio código de envio do formulário.
+      },
+      filter: function () {
+        return $(this).is(":visible");
+      },
+    });
+
+    $("a[data-toggle=\"tab\"]").click(function (e) {
+      e.preventDefault();
+      $(this).tab("show");
+    });
+  });
+</script>
 
   <!-- Template Javascript -->
   <script src="js/main.js"></script>
